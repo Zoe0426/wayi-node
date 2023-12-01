@@ -82,7 +82,7 @@ app.delete("/delete-task", async (req, res) => {
 });
 
 app.put("/complete-task", async (req, res) => {
-  const sql = `UPDATE task SET is_completed=? WHERE id IN (?)`;
+  const sql = `UPDATE task SET is_completed=?, updated_at = NOW() WHERE id IN (?)`;
 
   const updateValue = 1;
   const idsToUpdate = req.body.ids;
@@ -93,7 +93,7 @@ app.put("/complete-task", async (req, res) => {
 });
 
 app.put("/uncomplete-task", async (req, res) => {
-  const sql = `UPDATE task SET is_completed=? WHERE id IN (?)`;
+  const sql = `UPDATE task SET is_completed=?, updated_at = NOW() WHERE id IN (?)`;
 
   const updateValue = 0;
   const idsToUpdate = req.body.ids;
